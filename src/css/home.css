@@ -1,0 +1,214 @@
+/* #region BODY*/
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: #EEEEEE;
+  background-image: url(../img/bg.svg);
+  background-repeat: repeat-y;
+  background-size: cover;
+  font-family: 'Roboto', sans-serif;
+}
+.content-wrapper {
+  padding: 23px;
+}
+/* #endregion */
+/* #region BOOTSTRAP COL CONFIG*/
+.col-md-6 {
+  padding: 0px;
+  margin: 0px;
+}
+/* #endregion */
+/* #region HEADER*/
+.app-header {
+  padding: 20px;
+  display: table-cell;
+}
+
+.app-logo {
+  height: 50px;
+}
+
+.app-menu {
+  float: right;
+  margin-top: 15px;
+  margin-left: 40px;
+}
+
+.header-links {
+  text-decoration: none;
+  color: #231E1E;
+  margin-right: 20px;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+}
+
+.header-links:hover {
+  color: #ADADAD;
+  text-decoration: none;
+}
+
+.header-links:active {
+  color: #ADADAD;
+  text-decoration: none;
+}
+
+.header-links:focus {
+  color: #ADADAD;
+  text-decoration: none;
+}
+/* #endregion */
+
+
+/* #region HOME CONTENT*/
+.welcome-text {
+  padding: 100px;
+  padding-right: unset;
+  text-align: right;
+}
+.welcome-img {
+  text-align: left;
+}
+
+.welcome-text-title{
+  color: #333;
+  font-size: 20px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.welcome-text-parag{
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+/* #endregion */
+/* #region READING CONTENT */
+.main-book {
+  margin-top: 50px;
+  margin-bottom: 130px;
+}
+
+.main-card {
+  height: 230px;
+  width: 180px;
+  background-color: rgba(148, 145, 145, 0.289);
+}
+
+.book-title {
+  color: #666;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+.book-desc {
+  color: #808080;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+.details-title {
+  color: #808080;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-left: 20px;
+}
+
+.details-desc {
+    color: #3f3f3f;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+}
+
+.line-left {
+  border-left: 2px solid #9e9e9e;
+}
+
+.line {
+  height: 1.2px;
+  width: 100%;
+  background-color: #9e9e9e;
+  margin-bottom: 20px;
+}
+
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+.card {
+  display: inline-block;
+  height: 200px;
+  width: 150px;
+  background-color: rgba(148, 145, 145, 0.289);
+  margin-right: 80px;
+}
+/* #endregion */
+
+/* #region FOOTER*/
+.app-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 30%;  
+  background-color: white;
+  color: #333;
+  text-align: center;
+}
+.app-footer-menu {
+  margin-top: 10%;
+  font-weight: bold;
+}
+/* #endregion */
+
+/* #region RESPONSIVE*/
+@media only screen and (max-width: 768px) {
+  .welcome-text {
+    text-align: center;
+    padding: 0px;
+    padding-top: 50px
+  }
+
+  .welcome-img {
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+
+  .app-logo {
+    margin: unset;
+    padding: unset;
+    margin-left: 40%;
+  }
+
+  .app-menu {
+    float: unset;
+  }
+
+  .welcome-text {
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+    margin-top: 20px;
+  }
+
+  .welcome-img {
+    display: none;
+  }
+
+  .app-footer {
+    height: 20%;
+  }
+
+  .app-footer-menu {
+    margin-top: 15%;
+  }
+
+}
+/* #endregion */
