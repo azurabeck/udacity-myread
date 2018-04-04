@@ -58,10 +58,14 @@ class Reading extends Component {
                         <div className="card"><h2>Card</h2></div>
                         <div className="card"><h2>Card</h2></div>
                         <div className="card"><h2>Card</h2></div>
+                        <div className="card"><h2>Card</h2></div>
+                        <div className="card"><h2>Card</h2></div>
+                        <div className="card"><h2>Card</h2></div>
                     </div>
 
                 </div>
                 
+
             </div>
         )
     }

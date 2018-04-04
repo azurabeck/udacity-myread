@@ -159,9 +159,12 @@ body {
   background-color: white;
   color: #333;
   text-align: center;
+  z-index: -1
 }
 .app-footer-menu {
-  margin-top: 10%;
+  position: fixed;
+  bottom: 60px;
+  left: 40%;
   font-weight: bold;
 }
 /* #endregion */
