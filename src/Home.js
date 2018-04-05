@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import book from './img/books.png'
+import Footer from './components/footer'
 
 class Home extends Component {
     render() {
@@ -23,6 +24,9 @@ class Home extends Component {
                         <img src={book}/> 
                     </div> 
                 </div>
+
+                <Footer />
+
             </div>
         )
     }
