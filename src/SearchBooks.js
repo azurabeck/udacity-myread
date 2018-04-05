@@ -15,6 +15,8 @@ class AddBook extends Component {
     render() {
 
         const { books } = this.props
+
+        console.log(books)
         const { query } = this.state
 
         let showingBooks
@@ -52,7 +54,8 @@ class AddBook extends Component {
                                     backgroundImage: 'url(' + `${book.imageLinks.thumbnail}` + ')' 
                                     }}>
                                 </div>
-                                <div className="book-shelf-changer">
+                                <div className="book-shelf info"></div>
+                                <div className="book-shelf changer">
                                     <select>
                                         <option value="none" disabled>Move to...</option>
                                         <option value="currentlyReading">Currently Reading</option>

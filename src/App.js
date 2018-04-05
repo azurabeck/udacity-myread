@@ -5,7 +5,9 @@ import * as BookAPI from './BookApi'
 
 import Home from './Home'
 import Reading from './Reading'
-import AddBook from './AddBooks'
+import SearchBooks from './SearchBooks'
+import WantToRead from './WantRead'
+import Read from './Read'
 
 import './css/home.css'
 
@@ -18,9 +20,9 @@ class App extends Component {
     componentDidMount() {
         BookAPI.getAll().then((books) => {
           this.setState({ books })
-          console.log(books)
         })
     }
+
 
     render() {
       return (
@@ -33,11 +35,19 @@ class App extends Component {
                 )}/>
 
                 <Route exact path='/reading' render={() => (                
-                    <Reading />
+                    <Reading books={this.state.books} />
                 )}/>
 
-                <Route exact path='/search-books' render={() => (                
-                    <AddBook  books={this.state.books} />
+                <Route exact path='/want-to-read' render={() => (                
+                        <WantToRead  books={this.state.books} />
+                )}/>
+               
+                <Route exact path='/read' render={() => (                
+                    <Read  books={this.state.books} />
+                )}/>
+
+                 <Route exact path='/search-books' render={() => (                
+                    <SearchBooks  books={this.state.books} />
                 )}/>
 
             </div>  

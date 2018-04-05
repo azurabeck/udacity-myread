@@ -6,7 +6,8 @@ class Header extends Component {
     render() {
         return (
             <header className='app-header'>
-                <Link to='/'> <img className='app-logo' src={logo} /> </Link>
+                <Link to='/'> <img className='app-logo' src={logo} style={{ width: 100, 
+                                    height: 50, }} /> </Link>
                 <div className='app-menu'>
                     <Link className='header-links' to='/reading'> Reading </Link>
                     <Link className='header-links' to='/want-to-read'> Want to Read </Link>

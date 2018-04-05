@@ -3,18 +3,18 @@ import { Link } from 'react-router-dom'
 import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 
-class Reading extends Component {
+class WantToRead extends Component {
 
 
     render() {
 
         const { books } = this.props
-        let showOnlyReading        
-        let status = "currentlyReading"
+        let showWantToRead        
+        let status = "wantToRead"
 
         if ( status ) {
             const match = new RegExp(escapeRegExp(status), 'i')
-            showOnlyReading = books.filter((book) => match.test(book.shelf))
+            showWantToRead = books.filter((book) => match.test(book.shelf))            
         }
 
         return (
@@ -65,11 +65,11 @@ class Reading extends Component {
 
                 <div className='shelf'>
                    
-                    <p className='header-links'>Also Reading</p>
+                    <p className='header-links'>Also want to read</p>
                   
                     <div className="scrolling-wrapper">
 
-                            {showOnlyReading.map((book, index) => (
+                            {showWantToRead.map((book, index) => (
                                 <div className="book book-scroll" key={index}>
                                     
                                         <div className="book-top">
@@ -111,4 +111,4 @@ class Reading extends Component {
 
 }
 
-export default Reading
+export default WantToRead
