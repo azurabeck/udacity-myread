@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
-import escapeRegExp from 'escape-string-regexp'
-import sortBy from 'sort-by'
 
 class Reading extends Component {
 
@@ -13,8 +11,7 @@ class Reading extends Component {
         let status = "currentlyReading"
 
         if ( status ) {
-            const match = new RegExp(escapeRegExp(status), 'i')
-            showOnlyReading = books.filter((book) => match.test(book.shelf))
+            showOnlyReading = books.filter((book) => book.shelf === status)
         }
 
         return (
