@@ -1,12 +1,42 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 
+let titl
+let subt
+let auth
+let scor
+let desc
+let imag
+let page
+let pDat
+let publ
+
 class Reading extends Component {
 
+    state = {
+        info: {}
+    }
+
+    getArray(index, book={}, info) {
+
+        this.setState(info = book)
+
+        titl = book.title
+        subt = book.subtitle
+        auth = book.authors
+        scor = book.averageRating
+        desc = book.description
+        imag = book.imageLinks.thumbnail
+        page = book.pageCount
+        pDat = book.publishedDate
+        publ = book.publisher     
+
+    }
 
     render() {
-
+       
         const { books } = this.props
+        const { info } = this.state
         let showOnlyReading        
         let status = "currentlyReading"
 
@@ -22,14 +52,16 @@ class Reading extends Component {
                     <div className='row'>
 
                         <div className='col-md-2'>
-                            <div className="main-card"></div>
+                            <div className="main-card"  style={{ 
+                                                backgroundImage: 'url(' + `${imag}` + ')' 
+                                                }}></div>
                         </div>
                         
                         <div className='col-md-4'>
 
-                            <span className='book-title'>Book title</span>
+                            <span className='book-title'>{titl}</span>
                             <div className='line'></div>
-                            <p className='book-desc'>Lorem ipsum</p>
+                            <div className='desc-scroll'><p className='book-desc'>{desc}</p></div>
 
                         </div>
 
@@ -38,21 +70,33 @@ class Reading extends Component {
                         <div className='col-md-4 line-left' style={{marginTop:'70px'}}>
                         
                                 <div className='row'>
+                                    <span className='details-title'>Title: </span>
+                                    <span className='details-desc'>{titl}</span>
+                                </div>
+                                <div className='row'>
+                                    <span className='details-title'>Subtitle: </span>
+                                    <span className='details-desc'>{subt}</span>
+                                </div>
+                                <div className='row'>
                                     <span className='details-title'>Author: </span>
-                                    <span className='details-desc'>Author Name</span>
+                                    <span className='details-desc'>{auth}</span>
                                 </div>
                                 <div className='row'>
                                     <span className='details-title'>Page numbers: </span>
-                                    <span className='details-desc'>860</span>
+                                    <span className='details-desc'>{page}</span>
                                 </div>
                                 <div className='row'>
                                     <span className='details-title'>Book Score: </span>
-                                    <span className='details-desc'>10.0</span>
+                                    <span className='details-desc'>{scor}</span>
                                 </div>
                                 <div className='row'>
-                                    <span className='details-title'>Book Series: </span>
-                                    <span className='details-desc'>Yes </span>
+                                    <span className='details-title'>Publisher: </span>
+                                    <span className='details-desc'>{publ}</span>
                                 </div>
+                                <div className='row'>
+                                    <span className='details-title'>Publisher Date: </span>
+                                    <span className='details-desc'>{pDat}</span>
+                                </div>                                
 
                         </div>
 
@@ -79,7 +123,7 @@ class Reading extends Component {
                                                 backgroundImage: 'url(' + `${book.imageLinks.thumbnail}` + ')' 
                                                 }}>
                                             </div>
-                                            <div className="book-shelf info"></div>
+                                            <div className="book-shelf info" onClick={() => this.getArray(index, book)}></div>
                                             <div className="book-shelf changer">
                                                 <select>
                                                     <option value="none" disabled>Move to...</option>

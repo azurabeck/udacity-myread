@@ -89,13 +89,20 @@ p.break {
 /* #region READING CONTENT */
 .main-book {
   margin-top: 50px;
-  margin-bottom: 60px;
+  margin-bottom: 90px;
 }
 
 .main-card {
   height: 230px;
   width: 180px;
+  background-size: cover;
   background-color: rgba(148, 145, 145, 0.289);
+}
+
+.desc-scroll {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 190px;
 }
 
 .book-title {
@@ -279,7 +286,7 @@ p.break {
 }
 
 .search-books-results {
-  padding: 80px 10px 20px;
+  padding: 40px 10px 20px;
 }
 
 /* #region BOOK GRID*/
@@ -290,9 +297,7 @@ p.break {
   list-style-type: none;
   padding: 0;
   margin: 0;
-
   display: flex;
-  justify-content: right;
   flex-wrap: wrap;
 }
 .books-grid li {
