@@ -33,22 +33,34 @@ class Read extends Component {
         publ = book.publisher
 
     }
-    
+
+    showInfo(info) {
+
+        const infoDiv = document.getElementById('main-book')
+
+        if (this.state.info !== {}) {
+            infoDiv.style.display = 'block'
+        } else {
+            infoDiv.style.display = 'none'
+        }
+
+    }
+
     updateStatus(index, book = {}) {
 
-        const read = document.getElementById('read')        
+        const read = document.getElementById('read')
         const reading = document.getElementById('currentlyReading')
         const wantToRead = document.getElementById('wantToRead')
 
-            if (read.selected) {
-                BookAPI.update(book, 'read')
-            }
-            else if (reading.selected) {
-                BookAPI.update(book, 'currentlyReading')  
-            }
-            else if (wantToRead.selected) {
-                BookAPI.update(book, 'wantToRead')
-            }    
+        if (read.selected) {
+            BookAPI.update(book, 'read')
+        }
+        else if (reading.selected) {
+            BookAPI.update(book, 'currentlyReading')
+        }
+        else if (wantToRead.selected) {
+            BookAPI.update(book, 'wantToRead')
+        }
 
     }
 
@@ -66,7 +78,7 @@ class Read extends Component {
 
             <div>
 
-                <div className='main-book'>
+                <div className='main-book'  style={{ display: 'none' }}>
                     <div className='row'>
 
                         <div className='col-md-2'>
@@ -125,7 +137,7 @@ class Read extends Component {
 
                 <div className='shelf'>
 
-                    <p className='header-links'>Also Read</p>
+                    <p className='header-links'>List of books I've <strong>Read</strong></p>
 
                     <div className="scrolling-wrapper">
 
@@ -142,16 +154,21 @@ class Read extends Component {
                                             backgroundImage: 'url(' + `${book.imageLinks.thumbnail}` + ')'
                                         }}>
                                     </div>
-                                    <div className="book-shelf info" onClick={() => this.getArray(index, book)}></div>
+                                    <div className="book-shelf info"
+                                        onClick={() => {
+                                            this.getArray(index, book)
+                                            this.showInfo()
+                                        }}>
+                                    </div>
                                     <div className="book-shelf changer">
-                                        <select 
+                                        <select
                                             onClick={() => this.updateStatus(index, book)}
                                             onChange={() => window.location.reload()}>
                                             <option value="none" disabled>Move to...</option>
                                             <option value="read" id='read'>Actual status: Read</option>
-                                           
+
                                             <option value="currentlyReading" id='currentlyReading'>Reading</option>
-                                            <option value="wantToRead" id='wantToRead'>Want to Read</option>                                            
+                                            <option value="wantToRead" id='wantToRead'>Want to Read</option>
                                         </select>
                                     </div>
 
@@ -162,7 +179,7 @@ class Read extends Component {
                     </div>
 
                     <div className='shelf-footer'>
-                        <Link className='header-links' to='/search-books'> Add new books on your library! </Link>
+                        <Link className='header-links' to='/search-books'> All books in your library! </Link>
                     </div>
                 </div>
 

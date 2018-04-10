@@ -37,20 +37,32 @@ class WantToRead extends Component {
 
     updateStatus(index, book = {}) {
 
-        const read = document.getElementById('read')        
+        const read = document.getElementById('read')
         const reading = document.getElementById('currentlyReading')
         const wantToRead = document.getElementById('wantToRead')
 
-            if (read.selected) {
-                BookAPI.update(book, 'read')
-            }
-            else if (reading.selected) {
-                BookAPI.update(book, 'currentlyReading')  
-            }
-            else if (wantToRead.selected) {
-                BookAPI.update(book, 'wantToRead')
-            } 
-    }  
+        if (read.selected) {
+            BookAPI.update(book, 'read')
+        }
+        else if (reading.selected) {
+            BookAPI.update(book, 'currentlyReading')
+        }
+        else if (wantToRead.selected) {
+            BookAPI.update(book, 'wantToRead')
+        }
+    }
+
+    showInfo(info) {
+
+        const infoDiv = document.getElementById('main-book')
+
+        if (this.state.info !== {}) {
+            infoDiv.style.display = 'block'
+        } else {
+            infoDiv.style.display = 'none'
+        }
+
+    }
 
     render() {
 
@@ -66,7 +78,7 @@ class WantToRead extends Component {
 
             <div>
 
-                <div className='main-book'>
+                <div className='main-book'  style={{ display: 'none' }}>
                     <div className='row'>
 
                         <div className='col-md-2'>
@@ -124,7 +136,7 @@ class WantToRead extends Component {
 
                 <div className='shelf'>
 
-                    <p className='header-links'>Also want to read</p>
+                    <p className='header-links'>List of books I <strong>want to read</strong></p>
 
                     <div className="scrolling-wrapper">
 
@@ -141,16 +153,21 @@ class WantToRead extends Component {
                                             backgroundImage: 'url(' + `${book.imageLinks.thumbnail}` + ')'
                                         }}>
                                     </div>
-                                    <div className="book-shelf info" onClick={() => this.getArray(index, book)}></div>
+                                    <div className="book-shelf info"
+                                        onClick={() => {
+                                            this.getArray(index, book)
+                                            this.showInfo()
+                                        }}>
+                                    </div>
                                     <div className="book-shelf changer">
-                                    <select 
-                                        onClick={() => this.updateStatus(index, book)}
-                                        onChange={() => window.location.reload()}>
-                                        <option value="none" disabled>Move to...</option>
-                                        <option value="wantToRead" id='wantToRead'>Actual status: Want to Read</option>
-                                        <option value="currentlyReading" id='currentlyReading'>Currently Reading</option>
-                                        <option value="read" id='read'>Read</option>
-                                    </select>
+                                        <select
+                                            onClick={() => this.updateStatus(index, book)}
+                                            onChange={() => window.location.reload()}>
+                                            <option value="none" disabled>Move to...</option>
+                                            <option value="wantToRead" id='wantToRead'>Actual status: Want to Read</option>
+                                            <option value="currentlyReading" id='currentlyReading'>Currently Reading</option>
+                                            <option value="read" id='read'>Read</option>
+                                        </select>
                                     </div>
 
                                 </div>
@@ -160,7 +177,7 @@ class WantToRead extends Component {
                     </div>
 
                     <div className='shelf-footer'>
-                        <Link className='header-links' to='/search-books'> Add new books on your library! </Link>
+                        <Link className='header-links' to='/search-books'> All books in your library! </Link>
                     </div>
                 </div>
 
