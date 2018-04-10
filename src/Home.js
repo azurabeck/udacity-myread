@@ -1,13 +1,34 @@
 import React, {Component} from 'react'
 import book from './img/books.png'
-
+import { Link } from 'react-router-dom'
 
 const bg = 'url(' + book + ')'
 
 class Home extends Component {
-
-
     render() {
+
+        const { books } = this.props
+       
+        let showOnlyRead
+        let showOnlyReading
+        let showWantToRead
+
+        let statusRead = 'read'
+        let statusReading = 'currentlyReading'
+        let showOnlyWantToRead = 'wantToRead'
+    
+        if (statusRead) {
+            showOnlyRead = books.filter((book) => book.shelf === statusRead)
+        } 
+        
+        if (statusReading) {
+            showOnlyReading = books.filter((book) => book.shelf === statusReading)
+        }
+    
+        if (showOnlyWantToRead) {
+            showOnlyWantToRead = books.filter((book) => book.shelf === showOnlyWantToRead)
+        }
+
         return (
             <div className='row'>
                 <div className="image-aboutus-banner">
@@ -27,6 +48,102 @@ class Home extends Component {
                         </div>
                     </div>
                 </div>
+
+
+                <div className='shelf onHome'>
+                    
+                    <Link className='header-links' to='/reading'>
+
+                    <p className='header-links'>List of books I'm <strong>Reading</strong></p>
+
+                    <div className="scrolling-wrapper">
+
+                        {showOnlyReading.map((book, index) => (
+                            <div className="book book-scroll" key={index}>
+
+                                <div className="book-top">
+
+                                    <div
+                                        className="book-cover"
+                                        style={{
+                                            width: 128,
+                                            height: 193,
+                                            backgroundImage: 'url(' + `${book.imageLinks.thumbnail}` + ')'
+                                        }}>
+                                    </div>                           
+
+                                </div>
+                            </div>
+                        ))}
+
+                    </div>
+
+                    </Link>
+
+                </div>
+
+                <div className='shelf onHome'>
+                    
+                    <Link className='header-links' to='read'>
+
+                    <p className='header-links'>List of books I've <strong>Read</strong></p>
+
+                    <div className="scrolling-wrapper">
+
+                        {showOnlyRead.map((book, index) => (
+                            <div className="book book-scroll" key={index}>
+
+                                <div className="book-top">
+
+                                    <div
+                                        className="book-cover"
+                                        style={{
+                                            width: 128,
+                                            height: 193,
+                                            backgroundImage: 'url(' + `${book.imageLinks.thumbnail}` + ')'
+                                        }}>
+                                    </div>
+                                 
+
+                                </div>
+                            </div>
+                        ))}
+
+                    </div>
+
+                    </Link>
+
+                </div>
+
+                <div className='shelf onHome' style={{marginBottom:100}}>
+
+                    <Link className='header-links' to='want-to-read'>
+                    <p className='header-links'>List of books I <strong>Want to read</strong></p>
+
+                    <div className="scrolling-wrapper">
+
+                        {showOnlyWantToRead.map((book, index) => (
+                            <div className="book book-scroll" key={index}>
+
+                                <div className="book-top">
+
+                                    <div
+                                        className="book-cover"
+                                        style={{
+                                            width: 128,
+                                            height: 193,
+                                            backgroundImage: 'url(' + `${book.imageLinks.thumbnail}` + ')'
+                                        }}>
+                                    </div>                            
+
+                                </div>
+                            </div>
+                        ))}
+
+                    </div>
+                    </Link>
+                </div>
+                
             </div>
         )
     }

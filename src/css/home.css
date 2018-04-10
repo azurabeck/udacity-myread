@@ -72,7 +72,6 @@ p.break {
   background-position: center center;
   padding-top: 110px;
   padding-bottom:110px;
-  margin: -30px;
 }
 
 .lg-text {
@@ -83,6 +82,15 @@ p.break {
   opacity: unset;
 }
 
+.shelf.onHome:hover {
+  background-color: #8a89895b;
+}
+.shelf.onHome {
+  margin: 0;
+  margin-top: 30px;
+  margin-bottom: 0px;
+  cursor: pointer;
+}
 
 /* #endregion */
 /* #region READING CONTENT */

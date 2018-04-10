@@ -32,7 +32,7 @@ class App extends Component {
              <div className='content-wrapper'> 
 
                 <Route exact path='/' render={() => (                
-                    <Home />
+                    <Home books={this.state.books}/>
                 )}/>
 
                 <Route exact path='/reading' render={() => (                
