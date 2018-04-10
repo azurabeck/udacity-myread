@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import sortBy from 'sort-by'
+import * as BookAPI from './BookApi'
 
 let titl
 let subt
@@ -34,6 +34,23 @@ class WantToRead extends Component {
         publ = book.publisher
 
     }
+
+    updateStatus(index, book = {}) {
+
+        const read = document.getElementById('read')        
+        const reading = document.getElementById('currentlyReading')
+        const wantToRead = document.getElementById('wantToRead')
+
+            if (read.selected) {
+                BookAPI.update(book, 'read')
+            }
+            else if (reading.selected) {
+                BookAPI.update(book, 'currentlyReading')  
+            }
+            else if (wantToRead.selected) {
+                BookAPI.update(book, 'wantToRead')
+            } 
+    }  
 
     render() {
 
@@ -126,13 +143,14 @@ class WantToRead extends Component {
                                     </div>
                                     <div className="book-shelf info" onClick={() => this.getArray(index, book)}></div>
                                     <div className="book-shelf changer">
-                                        <select>
-                                            <option value="none" disabled>Move to...</option>
-                                            <option value="currentlyReading">Currently Reading</option>
-                                            <option value="wantToRead">Want to Read</option>
-                                            <option value="read">Read</option>
-                                            <option value="none">None</option>
-                                        </select>
+                                    <select 
+                                        onClick={() => this.updateStatus(index, book)}
+                                        onChange={() => window.location.reload()}>
+                                        <option value="none" disabled>Move to...</option>
+                                        <option value="wantToRead" id='wantToRead'>Actual status: Want to Read</option>
+                                        <option value="currentlyReading" id='currentlyReading'>Currently Reading</option>
+                                        <option value="read" id='read'>Read</option>
+                                    </select>
                                     </div>
 
                                 </div>

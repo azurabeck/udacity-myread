@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
+import * as BookAPI from './BookApi'
 
 let titl
 let subt
@@ -33,12 +34,32 @@ class Reading extends Component {
 
     }
 
+    updateStatus(index, book = {}) {
+
+        const read = document.getElementById('read')        
+        const reading = document.getElementById('currentlyReading')
+        const wantToRead = document.getElementById('wantToRead')
+
+            if (read.selected) {
+                BookAPI.update(book, 'read')
+            }
+            else if (reading.selected) {
+                BookAPI.update(book, 'currentlyReading')  
+            }
+            else if (wantToRead.selected) {
+                BookAPI.update(book, 'wantToRead')
+            } 
+
+    }
+
     render() {
        
         const { books } = this.props
         const { info } = this.state
         let showOnlyReading        
         let status = "currentlyReading"
+
+        console.log(books)
 
         if ( status ) {
             showOnlyReading = books.filter((book) => book.shelf === status)
@@ -125,13 +146,14 @@ class Reading extends Component {
                                             </div>
                                             <div className="book-shelf info" onClick={() => this.getArray(index, book)}></div>
                                             <div className="book-shelf changer">
-                                                <select>
-                                                    <option value="none" disabled>Move to...</option>
-                                                    <option value="currentlyReading">Currently Reading</option>
-                                                    <option value="wantToRead">Want to Read</option>
-                                                    <option value="read">Read</option>
-                                                    <option value="none">None</option>
-                                                </select>
+                                            <select 
+                                                onClick={() => this.updateStatus(index, book)}
+                                                onChange={() => window.location.reload()}>
+                                                <option value="none" disabled>Move to...</option>
+                                                <option value="currentlyReading" id='currentlyReading'>Actual status: Reading</option>
+                                                <option value="wantToRead" id='wantToRead'>Want to Read</option>
+                                                <option value="read" id='read'>Read</option>
+                                            </select>
                                             </div>
                                                     
                                         </div>
