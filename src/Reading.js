@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import * as BookAPI from './BookApi'
 
 let titl
@@ -68,7 +67,6 @@ class Reading extends Component {
     render() {
 
         const { books } = this.props
-        const { info } = this.state
         let showOnlyReading
         let status = "currentlyReading"
 

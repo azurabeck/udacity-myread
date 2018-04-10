@@ -1,8 +1,5 @@
 import React, {Component} from 'react'
-import book from './img/books.png'
 import { Link } from 'react-router-dom'
-
-const bg = 'url(' + book + ')'
 
 class Home extends Component {
     render() {
@@ -26,7 +23,7 @@ class Home extends Component {
         }
     
         if (showOnlyWantToRead) {
-            showOnlyWantToRead = books.filter((book) => book.shelf === showOnlyWantToRead)
+            showWantToRead = books.filter((book) => book.shelf === showOnlyWantToRead)
         }
 
         return (
@@ -122,7 +119,7 @@ class Home extends Component {
 
                     <div className="scrolling-wrapper">
 
-                        {showOnlyWantToRead.map((book, index) => (
+                        {showWantToRead.map((book, index) => (
                             <div className="book book-scroll" key={index}>
 
                                 <div className="book-top">

@@ -73,7 +73,6 @@ class AddBook extends Component {
                                     backgroundImage: 'url(' + `${book.imageLinks.thumbnail}` + ')' 
                                     }}>
                                 </div>
-                                <div className="book-shelf info"></div>
                                 <div className="book-shelf changer">
                                         <select 
                                             onClick={() => this.updateStatus(index, book)}
