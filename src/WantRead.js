@@ -78,7 +78,7 @@ class WantToRead extends Component {
 
             <div>
 
-                <div className='main-book'  style={{ display: 'none' }}>
+                <div className='main-book' id='main-book' style={{ display: 'none' }}>
                     <div className='row'>
 
                         <div className='col-md-2'>
@@ -175,10 +175,7 @@ class WantToRead extends Component {
                         ))}
 
                     </div>
-
-                    <div className='shelf-footer'>
-                        <Link className='header-links' to='/search-books'> All books in your library! </Link>
-                    </div>
+              
                 </div>
 
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import Header from './components/header'
+import Footer from './components/footer'
 import * as BookAPI from './BookApi'
 
 import Home from './Home'
@@ -49,8 +50,8 @@ class App extends Component {
                  <Route exact path='/search-books' render={() => (                
                     <SearchBooks  books={this.state.books} />
                 )}/>
-
             </div>  
+            <Footer />
             
         </div>
       )

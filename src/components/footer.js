@@ -7,7 +7,7 @@ class Footer extends Component {
         return(
             <div className='app-footer'>
                 <div className='app-footer-menu'>
-                     <Link className='header-links' to='/search-books'> Add new books on your library! </Link>
+                     <Link className='footer-link' to='/search-books'> All books in your library! </Link>
                 </div>
             </div>
         )

@@ -177,10 +177,7 @@ class Reading extends Component {
                         ))}
 
                     </div>
-
-                    <div className='shelf-footer'>
-                        <Link className='header-links' to='/search-books'> All books in your library! </Link>
-                    </div>
+                  
                 </div>
 
 

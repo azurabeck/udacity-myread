@@ -34,18 +34,6 @@ class Read extends Component {
 
     }
 
-    showInfo(info) {
-
-        const infoDiv = document.getElementById('main-book')
-
-        if (this.state.info !== {}) {
-            infoDiv.style.display = 'block'
-        } else {
-            infoDiv.style.display = 'none'
-        }
-
-    }
-
     updateStatus(index, book = {}) {
 
         const read = document.getElementById('read')
@@ -64,6 +52,19 @@ class Read extends Component {
 
     }
 
+    showInfo(info) {
+
+        const infoDiv = document.getElementById('main-book')
+
+        if (this.state.info !== {}) {
+            infoDiv.style.display = 'block'
+        } else {
+            infoDiv.style.display = 'none'
+        }
+
+    }
+
+
     render() {
 
         const { books } = this.props
@@ -78,7 +79,7 @@ class Read extends Component {
 
             <div>
 
-                <div className='main-book'  style={{ display: 'none' }}>
+                <div className='main-book'  id='main-book'  style={{ display: 'none' }}>
                     <div className='row'>
 
                         <div className='col-md-2'>
@@ -178,9 +179,6 @@ class Read extends Component {
 
                     </div>
 
-                    <div className='shelf-footer'>
-                        <Link className='header-links' to='/search-books'> All books in your library! </Link>
-                    </div>
                 </div>
 
 
