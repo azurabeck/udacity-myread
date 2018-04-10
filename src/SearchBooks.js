@@ -18,7 +18,6 @@ class AddBook extends Component {
         const read = document.getElementById('read')
         const reading = document.getElementById('currentlyReading')
         const wantToRead = document.getElementById('wantToRead')
-
         if (read.selected) {
             BookAPI.update(book, 'read')
         }
@@ -41,7 +40,11 @@ class AddBook extends Component {
         let showingBooks
         if(query) {
             const match = new RegExp(escapeRegExp(query), 'i')
-            showingBooks = books.filter((book) => match.test(book.title) || match.test(book.authors))
+            showingBooks = books.filter((book) =>
+                 match.test(book.title) || 
+                 match.test(book.authors) ||
+                 match.test(book.publisher) || 
+                 match.test(book.categories))
         } else {
             showingBooks = books
         }
@@ -53,7 +56,7 @@ class AddBook extends Component {
             <div className="search-books-bar">
               <div className="search-books-input-wrapper">
 
-                <input type="text" placeholder="Search by title or author" value={query} 
+                <input type="text" placeholder="Search by title, author, categories or publisher" value={query} 
                   onChange={(event) => this.updateQuery(event.target.value)} />
 
               </div>
