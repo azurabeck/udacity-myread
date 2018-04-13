@@ -33,6 +33,18 @@ class Reading extends Component {
 
     }
 
+    updateQuery = (query) => {
+        this.setState({query})
+        if (query) {
+            BookAPI.search (query) 
+              .then(searchBooks => {
+                  this.setState({ searchBooks });
+              });
+        } else {
+            this.setState({searchBooks: []})
+        }
+      }
+
     showInfo(info) {
 
         const infoDiv = document.getElementById('main-book')
@@ -160,13 +172,15 @@ class Reading extends Component {
                                         }}>
                                     </div>
                                     <div className="book-shelf changer">
-                                        <select
-                                            onClick={() => this.updateStatus(index, book)}
-                                            onChange={() => window.location.reload()}>
+                                            <select 
+                                                valeu={book.shelf ? book.shelf: 'none'}
+                                                onChange={e => this.props.updateShelf(book, e.target.value)}>
                                             <option value="none" disabled>Move to...</option>
-                                            <option value="currentlyReading" id='currentlyReading'>Actual status: Reading</option>
-                                            <option value="wantToRead" id='wantToRead'>Want to Read</option>
-                                            <option value="read" id='read'>Read</option>
+                                            <option> Set new status</option>
+                                            <option value="currentlyReading">Currently Reading</option>
+                                            <option value="wantToRead">Want to Read</option>
+                                            <option value="read">Read</option>
+                                            <option value="none">Reset status</option>
                                         </select>
                                     </div>
 

@@ -34,20 +34,15 @@ class WantToRead extends Component {
 
     }
 
-    updateStatus(index, book = {}) {
-
-        const read = document.getElementById('read')
-        const reading = document.getElementById('currentlyReading')
-        const wantToRead = document.getElementById('wantToRead')
-
-        if (read.selected) {
-            BookAPI.update(book, 'read')
-        }
-        else if (reading.selected) {
-            BookAPI.update(book, 'currentlyReading')
-        }
-        else if (wantToRead.selected) {
-            BookAPI.update(book, 'wantToRead')
+    updateQuery = (query) => {
+        this.setState({query})
+        if (query) {
+            BookAPI.search (query) 
+              .then(searchBooks => {
+                  this.setState({ searchBooks });
+              });
+        } else {
+            this.setState({searchBooks: []})
         }
     }
 
@@ -160,12 +155,14 @@ class WantToRead extends Component {
                                     </div>
                                     <div className="book-shelf changer">
                                         <select
-                                            onClick={() => this.updateStatus(index, book)}
-                                            onChange={() => window.location.reload()}>
+                                            valeu={book.shelf ? book.shelf : 'none'}
+                                            onChange={e => this.props.updateShelf(book, e.target.value)}>
                                             <option value="none" disabled>Move to...</option>
-                                            <option value="wantToRead" id='wantToRead'>Actual status: Want to Read</option>
-                                            <option value="currentlyReading" id='currentlyReading'>Currently Reading</option>
-                                            <option value="read" id='read'>Read</option>
+                                            <option> Set new status</option>
+                                            <option value="currentlyReading">Currently Reading</option>
+                                            <option value="wantToRead">Want to Read</option>
+                                            <option value="read">Read</option>
+                                            <option value="none">Reset status</option>
                                         </select>
                                     </div>
 

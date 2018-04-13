@@ -38,7 +38,7 @@ class App extends Component {
              <div className='content-wrapper'> 
 
                 <Route exact path='/' render={() => (                
-                    <Home books={this.state.books}/>
+                    <Home books={this.state.books}  updateShelf={this.updateShelf}/>
                 )}/>
 
                 <Route exact path='/reading' render={() => (                
@@ -46,11 +46,11 @@ class App extends Component {
                 )}/>
 
                 <Route exact path='/want-to-read' render={() => (                
-                        <WantToRead  books={this.state.books} />
+                        <WantToRead  books={this.state.books}  updateShelf={this.updateShelf} />
                 )}/>
                
                 <Route exact path='/read' render={() => (                
-                    <Read  books={this.state.books} />
+                    <Read  books={this.state.books}  updateShelf={this.updateShelf} />
                 )}/>
 
                  <Route exact path='/search-books' render={() => (                

@@ -75,9 +75,10 @@ class AddBook extends Component {
                                             onChange={e => this.props.updateShelf(book, e.target.value)}>
                                         <option value="none" disabled>Move to...</option>
                                         <option> Set new status</option>
-                                        <option value="currentlyReading" id='currentlyReading'>Currently Reading</option>
-                                        <option value="wantToRead" id='wantToRead'>Want to Read</option>
-                                        <option value="read" id='read'>Read</option>
+                                        <option value="currentlyReading">Currently Reading</option>
+                                        <option value="wantToRead">Want to Read</option>
+                                        <option value="read">Read</option>
+                                        <option value="none">Reset status</option>
                                     </select>
                                 </div>
                             </div>
