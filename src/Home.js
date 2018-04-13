@@ -49,7 +49,7 @@ class Home extends Component {
 
                 <div className='shelf onHome'>
                     
-                    <Link className='header-links' to='/reading'>
+                    {/*<Link className='header-links' to='/reading'>*/}
 
                     <p className='header-links'>List of books I'm <strong>Reading</strong></p>
 
@@ -67,7 +67,18 @@ class Home extends Component {
                                             height: 193,
                                             backgroundImage: 'url(' + `${book.imageLinks.thumbnail}` + ')'
                                         }}>
-                                    </div>                           
+                                    </div>        
+
+                                    <div className="book-shelf changer">
+                                        <select 
+                                            value={book.shelf ? book.shelf : 'none'} 
+                                            onChange={e => this.props.updateShelf(book, e.target.value)}>
+                                            <option value="none" disabled>Move to...</option>
+                                            <option value="read" id='read'>Read</option>
+                                            <option value="currentlyReading" id='currentlyReading'>Reading</option>
+                                            <option value="wantToRead" id='wantToRead'>Want to Read</option>
+                                        </select>          
+                                    </div>                       
 
                                 </div>
                             </div>
@@ -75,13 +86,11 @@ class Home extends Component {
 
                     </div>
 
-                    </Link>
-
                 </div>
 
                 <div className='shelf onHome'>
                     
-                    <Link className='header-links' to='read'>
+                    {/*<Link className='header-links' to='read'>*/}
 
                     <p className='header-links'>List of books I've <strong>Read</strong></p>
 
@@ -101,6 +110,16 @@ class Home extends Component {
                                         }}>
                                     </div>
                                  
+                                    <div className="book-shelf changer">
+                                        <select 
+                                            value={book.shelf ? book.shelf : 'none'} 
+                                            onChange={e => this.props.updateShelf(book, e.target.value)}>
+                                            <option value="none" disabled>Move to...</option>
+                                            <option value="read" id='read'>Read</option>
+                                            <option value="currentlyReading" id='currentlyReading'>Reading</option>
+                                            <option value="wantToRead" id='wantToRead'>Want to Read</option>
+                                        </select>          
+                                    </div>    
 
                                 </div>
                             </div>
@@ -108,13 +127,14 @@ class Home extends Component {
 
                     </div>
 
-                    </Link>
+                    
 
                 </div>
 
                 <div className='shelf onHome' style={{marginBottom:100}}>
 
-                    <Link className='header-links' to='want-to-read'>
+                    {/*<Link className='header-links' to='want-to-read'>*/}
+
                     <p className='header-links'>List of books I <strong>Want to read</strong></p>
 
                     <div className="scrolling-wrapper">
@@ -131,14 +151,25 @@ class Home extends Component {
                                             height: 193,
                                             backgroundImage: 'url(' + `${book.imageLinks.thumbnail}` + ')'
                                         }}>
-                                    </div>                            
+                                    </div>                                     
+                                    
+                                    <div className="book-shelf changer">
+                                        <select 
+                                            value={book.shelf ? book.shelf : 'none'} 
+                                            onChange={e => this.props.updateShelf(book, e.target.value)}>
+                                            <option value="none" disabled>Move to...</option>
+                                            <option value="read" id='read'>Read</option>
+                                            <option value="currentlyReading" id='currentlyReading'>Reading</option>
+                                            <option value="wantToRead" id='wantToRead'>Want to Read</option>
+                                        </select>          
+                                    </div>                
 
                                 </div>
                             </div>
                         ))}
 
                     </div>
-                    </Link>
+                    
                 </div>
                 
             </div>

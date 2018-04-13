@@ -2,51 +2,44 @@ import React, { Component } from 'react'
 import * as BookAPI from './BookApi'
 
 import escapeRegExp from 'escape-string-regexp'
+import { search } from './BookApi';
 
 class AddBook extends Component {
 
     state = {
-      query: ''
+      query: '',
+      searchBooks: []
     }
     
     updateQuery = (query) => {
       this.setState({query})
+      if (query) {
+          BookAPI.search (query) 
+            .then(searchBooks => {
+                this.setState({ searchBooks });
+            });
+      } else {
+          this.setState({searchBooks: []})
+      }
     }
-
-    updateStatus(index, book = {}) {
-
-        const read = document.getElementById('read')
-        const reading = document.getElementById('currentlyReading')
-        const wantToRead = document.getElementById('wantToRead')
-        if (read.selected) {
-            BookAPI.update(book, 'read')
-        }
-        else if (reading.selected) {
-            BookAPI.update(book, 'currentlyReading')
-        }
-        else if (wantToRead.selected) {
-            BookAPI.update(book, 'wantToRead')
-        }
-    }
-
 
     render() {
 
         const { books } = this.props
 
         console.log(books)
-        const { query } = this.state
+        const { query, searchBooks } = this.state
 
         let showingBooks
         if(query) {
             const match = new RegExp(escapeRegExp(query), 'i')
-            showingBooks = books.filter((book) =>
+            showingBooks = searchBooks.filter((book) =>
                  match.test(book.title) || 
                  match.test(book.authors) ||
                  match.test(book.publisher) || 
                  match.test(book.categories))
         } else {
-            showingBooks = books
+            showingBooks = searchBooks
         }
 
 
@@ -78,8 +71,8 @@ class AddBook extends Component {
                                 </div>
                                 <div className="book-shelf changer">
                                         <select 
-                                            onClick={() => this.updateStatus(index, book)}
-                                            onChange={() => window.location.reload()}>
+                                            valeu={book.shelf ? book.shelf: 'none'}
+                                            onChange={e => this.props.updateShelf(book, e.target.value)}>
                                         <option value="none" disabled>Move to...</option>
                                         <option> Set new status</option>
                                         <option value="currentlyReading" id='currentlyReading'>Currently Reading</option>
